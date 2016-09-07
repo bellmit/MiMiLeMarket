@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF" >
+
+    <!-- 评价界面里的返回按钮 -->
+
+    <ImageButton
+        android:id="@+id/publish_evaluation_ImageButton_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/gooback" />
+
+    <!-- 评价界面里的标题按钮 -->
+
+    <TextView
+        android:id="@+id/publish_evaluation_TextView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/publish_evaluation_textv_title"
+        android:textColor="#000000"
+        android:textSize="24sp" />
+
+    <!-- 评价界面里的头部分割线按钮 -->
+    <ImageView
+        android:id="@+id/account_balance_ImageView_imageline"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/colorline"
+        android:layout_below="@id/publish_evaluation_ImageButton_back"
+        android:layout_marginTop="5dp"
+        />
+    
+    <!-- 评价界面里的图片 -->
+    <ImageView
+        android:id="@+id/publish_evaluation_ImageView_goods"
+        android:layout_width="60dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/account_balance_ImageView_imageline"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/img20160721111"
+        />
+    
+    <!-- 评价界面里的图片 -->
+    <EditText
+        android:id="@+id/publish_evaluation_EditText_comment"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/account_balance_ImageView_imageline"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/publish_evaluation_ImageView_goods"
+        android:layout_marginLeft="10dp"
+        android:hint="亲，快评价吧"
+        android:gravity="left"
+        android:background="@null"
+        />
+    
+    <!-- 评价界面里的星级评价 -->
+    <TextView
+        android:id="@+id/publish_evaluation_TextView_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/publish_evaluation_EditText_comment"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+         android:textColor="#eb4f38"
+        android:text="@string/publish_evaluation_textv_level"
+        />
+
+    <RatingBar
+        android:id="@+id/publish_evaluation_RatingBar_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/publish_evaluation_TextView_level"
+        android:stepSize="1"
+        android:layout_marginTop="5dp"
+        android:numStars="5"
+        />
+    
+     <!-- 评价界面里的中间分割线按钮 -->
+    <View
+        android:id="@+id/publish_evaluation_View_mid"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/publish_evaluation_RatingBar_star"
+        android:layout_marginTop="5dp"
+        android:background="#001000" 
+        />
+    
+     <Button
+        android:id="@+id/publish_evaluation_Button_publish"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/publish_evaluation_View_mid"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+         android:background="#00000000"
+         android:drawableRight="@drawable/imgputevaluation"
+         
+        android:text="@string/publish_evaluation_btn_publish"
+        android:textSize="20sp"
+        />
+
+</RelativeLayout>

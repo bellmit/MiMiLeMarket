@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF" >
+    
+<!--     商品详情_详情界面里的返回按钮 -->
+    <ImageButton
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/goods_detail_ImageButton_back"
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/gooback"
+        />
+    
+<!--     商品详情_详情界面的顶部线性布局 -->
+    <RelativeLayout 
+        android:id="@+id/goods_detail_linearlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp">
+    
+    
+     
+     <!--     商品详情_详情界面的“详情”按钮 -->
+     <Button 
+                android:id="@+id/goods_detail_Button_detail"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@+id/goods_detail_Button_comment"
+                android:layout_marginRight="10dp"
+                android:background="#F5F5F5"
+                android:text="@string/goods_brief_btn_detail"
+                android:textSize="18sp"
+                />
+     <!--     商品详情_详情界面的“评价”按钮 -->
+     <Button 
+                android:id="@+id/goods_detail_Button_comment"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                 android:layout_marginRight="5dp"
+                android:background="#F5F5F5"
+                android:text="@string/goods_brief_btn_comment"
+                android:textSize="18sp"
+                />
+        </RelativeLayout>
+        
+     <ImageView
+        android:id="@+id/goods_detail_ImageView_line"
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_below="@id/goods_detail_linearlay"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/colorline"
+        />
+        
+      <!--     商品详情_商品界面的商品图片 -->
+    <ImageView
+        android:id="@+id/goods_detail_ImageView_goods"
+        android:layout_height="280dp"
+        android:layout_width="300dp"
+        android:layout_below="@id/goods_detail_ImageView_line"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/img20160721241"
+        />
+    
+    <!--     商品详情_详情界面的底部线性布局 -->
+    <TableLayout
+        android:id="@+id/goods_detail_TableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="350dp">
+     
+        <TableRow >
+
+            <TextView
+                android:id="@+id/goods_detail_TextView_goodsname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/goods_brief_textv_goodsname"
+                android:textSize="20sp" />
+        </TableRow>
+    
+          <TableRow 
+              android:layout_marginTop="7dp">
+            
+                <TextView 
+                android:id="@+id/goods_detail_TextView_price"
+                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:text="@string/goods_brief_textv_price"
+                android:textSize="20sp"
+                />    
+                
+                <TextView 
+                android:id="@+id/goods_detail_TextView_sales"
+                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:text="@string/goods_brief_textv_sales"
+                android:textSize="20sp"
+                />
+              
+          </TableRow>
+          
+          <TableRow 
+              android:layout_marginTop="7dp">
+                
+            <TextView 
+                android:id="@+id/goods_detail_TextView_store"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/goods_detail_textv_store"
+                android:textSize="20sp"
+                />
+             </TableRow>
+             
+          <TableRow 
+              android:layout_marginTop="7dp">
+            <TextView 
+                android:id="@+id/goods_detail_TextView_size"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/goods_detail_textv_size"
+                android:textSize="20sp"
+                />
+             </TableRow>
+            
+           <TableRow 
+              android:layout_marginTop="7dp">
+            
+            <TextView 
+                android:id="@+id/goods_detail_TextView_color"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/goods_detail_textv_color"
+                android:textSize="20sp"
+                />  
+            </TableRow>
+            
+     </TableLayout>
+     
+      <include 
+          layout="@layout/belowtitle"
+        android:layout_below="@id/goods_detail_TableLayout"
+        android:layout_marginTop="30dp"
+        android:id="@+id/order_nonePayed_title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        />
+    
+
+</RelativeLayout>

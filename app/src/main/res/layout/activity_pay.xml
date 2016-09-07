@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    >
+
+    <RelativeLayout
+        android:id="@+id/pay_title_RelativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/pay_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/gooback"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textSize="25sp"
+            android:text="确认订单"
+            android:textColor="#000000"
+            />
+
+        <Button
+            android:id="@+id/pay_ack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="确认"
+            android:background="#ffffff"
+            android:layout_alignParentRight="true"/>
+
+        <ImageView
+            android:id="@+id/pay_ImageView_imageline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/colorline"
+            android:layout_below="@id/pay_back"
+            android:layout_marginTop="5dp"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/pay_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pay_title_RelativeLayout1"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:textSize="20sp"
+        android:text="总价:"
+        />
+
+    <View
+        android:id="@+id/pay_ImageView_imageline1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/pay_price"
+        android:background="#000000"
+        android:layout_marginTop="5dp"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/member_settings_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/pay_ImageView_imageline1"
+        android:layout_marginTop="3dp"
+        >
+        <TextView
+            android:id="@+id/pay_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:text="收货人"
+            />
+        <TextView
+            android:id="@+id/pay_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:textSize="18sp"
+            android:text="电话"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/pay_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/member_settings_LinearLayout"
+        android:paddingRight="20dp"
+        android:paddingTop="20dp"
+        android:textSize="18sp"
+        android:text="地址"
+        />
+    <View
+        android:id="@+id/activity_pay_line7"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/pay_address"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        />
+
+    <TextView
+        android:id="@+id/pay_TextView_logistics"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_pay_line7"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="0dp"
+        android:textSize="18sp"
+        android:text="物流方式 "
+        
+        />
+<TextView
+        android:id="@+id/pay_TextView_logisticsform"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_pay_line7"
+        android:layout_toRightOf="@id/pay_TextView_logistics"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+       
+        android:textSize="18sp"
+        android:gravity="right"
+        android:text="米米乐物流"
+        
+        />
+    <View
+        android:id="@+id/activity_pay_line8"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/pay_TextView_logistics"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        />
+
+    <ListView
+        android:id="@+id/pay_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_pay_line8"
+        >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/pay_RelativeLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pay_listView"
+        >
+
+        <TextView
+            android:id="@+id/pay_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="支付方式"
+            />
+        <LinearLayout
+            android:id="@+id/pay_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"     >
+
+            <RadioGroup
+                android:id="@+id/pay_RadioGroup_choose"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/pay_radbu_mi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="米米乐支付" />
+
+                <RadioButton
+                    android:id="@+id/pay_radbu_ponts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="其他支付" />
+            </RadioGroup>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

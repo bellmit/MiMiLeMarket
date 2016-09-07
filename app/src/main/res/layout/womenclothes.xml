@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!--     分类2-1  到     2-3 -->
+    
+    <RelativeLayout
+         android:id="@+id/womenclothes_relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        
+        >    
+<!--         分类2-1 -->
+        <ImageView 
+            android:id="@+id/category_level_21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_alignParentLeft="true"            
+           android:layout_marginLeft="22dp" 
+            android:background="@drawable/dress" />  
+           <TextView
+            android:id="@+id/category_level_21_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true" 
+            android:paddingLeft="30dp"  
+            android:layout_marginTop="1dp" 
+            android:layout_below="@id/category_level_21" 
+            android:text="裙装" />       
+<!--         分类2-2 -->            
+        <ImageView 
+            android:id="@+id/category_level_22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="1dp"              
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/womencoat" /> 
+           <TextView
+            android:id="@+id/category_level_22_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" 
+            android:layout_marginTop="1dp"             
+            android:layout_below="@id/category_level_22" 
+            android:text="上装" />             
+<!--         分类2-3 -->                           	        
+        <ImageView 
+            android:id="@+id/category_level_23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                    
+            android:layout_alignParentRight="true" 
+            android:layout_marginRight="22dp"          
+            android:background="@drawable/womenpants" /> 
+           <TextView
+            android:id="@+id/category_level_23_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:paddingRight="30dp" 
+            android:layout_below="@id/category_level_23" 
+            android:text="裤装" />                  	
+      </RelativeLayout>	
+<!--     分类2-4  到     2-6 -->   
+
+
+   
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"        
+        android:layout_below="@id/womenclothes_relativeLayout1"  
+        android:layout_marginTop="40dp" >
+<!--            分类2-4 -->
+        <ImageView 
+            android:id="@+id/category_level_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_alignParentLeft="true"            
+           android:layout_marginLeft="22dp"
+            android:src="@drawable/motherclothes" />  
+           <TextView
+            android:id="@+id/category_level_24_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true" 
+            android:paddingLeft="20dp"  
+            android:layout_marginTop="1dp"  
+            android:layout_below="@id/category_level_24" 
+            android:text="妈妈装" />       
+<!--         分类2-5 -->            
+        <ImageView 
+            android:id="@+id/category_level_25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"     
+            android:layout_marginTop="1dp"            
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/sports" /> 
+           <TextView
+            android:id="@+id/category_level_25_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_marginTop="1dp" 
+            android:layout_centerHorizontal="true"            
+            android:layout_below="@id/category_level_25" 
+            android:text="运动套装" />             
+<!--         分类2-6 -->                           	        
+        <ImageView 
+            android:id="@+id/category_level_26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                    
+            android:layout_alignParentRight="true" 
+            android:layout_marginRight="22dp"             
+            android:src="@drawable/olclothes" /> 
+           <TextView
+            android:id="@+id/category_level_26_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+           android:paddingRight="15dp" 
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/category_level_26" 
+            android:text="职业套装" />             
+     </RelativeLayout>
+
+</RelativeLayout>

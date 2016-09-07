@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"  
+        android:layout_height="wrap_content" >
+     <Button
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/logistics_info_ImageButton_back"
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/gooback"
+        />
+      <TextView       
+      android:layout_width="wrap_content"  
+      android:layout_height="wrap_content"  
+      android:layout_centerHorizontal="true"        
+      android:layout_marginTop="10dp"
+      android:textSize="25sp"  
+      android:text="@string/info_oflogi"             
+      />
+      
+      <ImageView
+        android:id="@+id/logistics_info_title_ImageView_headline"
+        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/colorline"
+        
+        />
+      
+      <TextView    
+      android:id="@+id/logistics_info_tab_number"
+      android:layout_width="wrap_content"  
+      android:layout_height="wrap_content"  
+      android:layout_below="@id/logistics_info_ImageButton_back"       
+      android:layout_marginTop="10dp"
+      android:textSize="17sp"  
+      android:text="@string/num_oflogi"             
+      />
+      <TextView    
+      android:id="@+id/logistics_info_number"
+      android:layout_width="wrap_content"  
+      android:layout_height="wrap_content"
+      android:layout_below="@id/logistics_info_ImageButton_back"   
+      android:layout_toRightOf="@id/logistics_info_tab_number"      
+      android:layout_marginTop="10dp"
+      android:textSize="17sp"
+      android:lines="1"  
+      android:text="                       "             
+      /> 
+      <TextView    
+      android:id="@+id/logistics_info_tab_order_number"
+      android:layout_width="wrap_content"  
+      android:layout_height="wrap_content"  
+      android:layout_below="@id/logistics_info_tab_number"       
+      android:layout_marginTop="10dp"
+      android:textSize="17sp"  
+      android:text="@string/num_oford"             
+      />
+      <TextView    
+      android:id="@+id/logistics_info_order_number"
+      android:layout_width="wrap_content"  
+      android:layout_height="wrap_content"
+      android:layout_below="@id/logistics_info_tab_number"   
+      android:layout_toRightOf="@id/logistics_info_tab_order_number"          
+      android:layout_marginTop="10dp"
+      android:textSize="17sp"
+      android:lines="1"  
+      android:text="                      "             
+      />       
+
+</RelativeLayout>

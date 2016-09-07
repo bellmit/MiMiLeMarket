@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <!-- 加入购物车和立即购买选择界面里的图片 -->
+    <ImageView
+        android:id="@+id/addShopCar_or_buy_ImageView_goods"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_launcher"
+        />
+    
+        <LinearLayout
+        android:id="@+id/addShopCar_or_buy_LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical"
+        android:layout_below="@id/addShopCar_or_buy_ImageView_goods"
+        android:layout_marginLeft="30dp"
+        >
+            <TextView
+                android:id="@+id/addShopCar_or_buy_TextView_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="价格："
+                android:textSize="20sp" 
+                />
+            
+            <TextView 
+                android:id="@+id/addShopCar_or_buy_TextView_save"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:text="库存:"
+                android:textSize="20sp"
+                />       
+            
+          </LinearLayout>
+          
+         <LinearLayout
+        android:id="@+id/addShopCar_or_buy_LinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:layout_below="@id/addShopCar_or_buy_LinearLayout1"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        >
+            <TextView 
+                android:id="@+id/addShopCar_or_buy_TextView_number"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="数量:"
+                android:textSize="20sp"
+                />
+            
+            <EditText 
+                android:id="@+id/addShopCar_or_buy_EditText_num"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:hint="input number"
+                android:textSize="20sp"
+                />
+           </LinearLayout>
+    </RelativeLayout>
+
+

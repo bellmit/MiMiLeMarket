@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!--     分类2-1  到     2-3 -->
+    <RelativeLayout
+        android:id="@+id/food_relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >    
+<!--         分类2-1 -->
+        <ImageView 
+            android:id="@+id/category_level_41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="1dp"   
+            android:layout_marginLeft="22dp"   
+            android:src="@drawable/foodrecommand" />  
+           <TextView
+            android:id="@+id/category_level_41_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true" 
+            android:paddingLeft="15dp"  
+            android:layout_marginTop="1dp" 
+            android:layout_below="@id/category_level_41" 
+            android:text="当季推荐" />       
+<!--         分类2-2 -->            
+        <ImageView 
+            android:id="@+id/category_level_42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"              
+            android:layout_marginTop="1dp"              
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/snacks" /> 
+           <TextView
+            android:id="@+id/category_level_42_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"   
+            android:layout_marginTop="1dp"               
+            android:layout_below="@id/category_level_42" 
+            android:text="休闲零食" />             
+<!--         分类2-3 -->                           	        
+        <ImageView 
+            android:id="@+id/category_level_43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                    
+            android:layout_alignParentRight="true"           
+             android:layout_marginRight="22dp"              
+            android:src="@drawable/seafood" /> 
+           <TextView
+            android:id="@+id/category_level_43_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:paddingRight="15dp" 
+            android:layout_marginTop="1dp" 
+            android:layout_below="@id/category_level_43" 
+            android:text="水产海鲜" />                  	
+      </RelativeLayout>	
+<!--     分类2-4  到     2-6 -->      
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"  
+        android:layout_below="@id/food_relativeLayout1"  
+        android:layout_marginTop="40dp"    
+        >
+<!--            分类2-4 -->
+        <ImageView 
+            android:id="@+id/category_level_44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_alignParentLeft="true"             
+             android:layout_marginLeft="22dp"  
+            android:src="@drawable/teawine" />  
+           <TextView
+            android:id="@+id/category_level_44_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true" 
+            android:paddingLeft="15dp"  
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/category_level_44" 
+            android:text="茶酒冲饮" />       
+<!--         分类2-5 -->            
+        <ImageView 
+            android:id="@+id/category_level_45"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"              
+            android:layout_marginTop="1dp"              
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/oilfood" /> 
+           <TextView
+            android:id="@+id/category_level_45_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"   
+            android:layout_marginTop="1dp"               
+            android:layout_below="@id/category_level_45" 
+            android:text="粮油干货" />             
+<!--         分类2-6 -->                           	        
+        <ImageView 
+            android:id="@+id/category_level_46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                    
+            android:layout_alignParentRight="true"           
+             android:layout_marginRight="22dp"          
+            android:src="@drawable/nutritious" /> 
+           <TextView
+            android:id="@+id/category_level_46_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:paddingRight="15dp" 
+            android:layout_marginTop="1dp" 
+            android:layout_below="@id/category_level_46" 
+            android:text="保健滋补" />             
+     </RelativeLayout>
+
+</RelativeLayout>

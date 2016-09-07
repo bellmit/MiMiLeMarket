@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/order_confirm_back_butn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/gooback"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="确认订单"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <ImageView
+            android:id="@+id/order_confirm_ImageView_imageline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/order_confirm_back_butn"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/colorline" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+        <!--      商品图片 -->
+        <ImageView
+            android:id="@+id/order_confirm_goods_image"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="4dp"
+            android:src="@drawable/img20160721241" />
+        <!--      商品名称 -->
+        <TextView
+            android:id="@+id/order_confirm_goods_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@id/order_confirm_goods_image"
+            android:text="四川 移动 手机充值10元 快充直充 24小时自动到账"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <!--             商品尺码-->
+        <TextView
+            android:id="@+id/order_confirm_goods_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_above="@+id/order_confirm_line2"
+            android:layout_alignParentRight="true"
+
+
+            android:layout_marginRight="14dp"
+            android:text="77"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/order_confirm_tab_goods_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_above="@id/order_confirm_line2"
+            android:layout_marginRight="5dp"
+
+            android:layout_toLeftOf="@id/order_confirm_goods_num"
+            android:text="数量:"
+            android:textColor="#000000"
+            android:textSize="16sp"
+
+            />
+        <!--              商品颜色 -->
+        <TextView
+            android:id="@+id/order_confirm_goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_above="@id/order_confirm_line2"
+            android:layout_marginRight="10dp"
+
+            android:layout_toLeftOf="@id/order_confirm_tab_goods_num"
+            android:text="122"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/order_confirm_tab_goods_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_above="@id/order_confirm_line2"
+            android:layout_marginRight="5dp"
+
+            android:layout_toLeftOf="@id/order_confirm_goods_price"
+            android:text="价格:"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/order_confirm_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_below="@id/order_confirm_goods_image"
+            android:layout_marginTop="5dp"
+            android:background="#696969" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="4dp"
+            android:paddingTop="20dp"
+            android:text="配送方式"
+            android:textSize="15sp" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="20dp"
+            android:paddingTop="20dp"
+            android:text="米米乐物流"
+            android:textSize="15sp" />
+
+        <View
+            android:id="@+id/order_confirm_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_marginTop="50dp"
+            android:background="#696969" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/order_confirm_butn_addr_choose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="#FFFFFF"
+            android:text="选择地址"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <View
+            android:id="@+id/order_confirm_line3"
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_marginTop="50dp"
+            android:background="#696969" />
+
+        <TableLayout
+            android:id="@+id/member_settings_tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_confirm_butn_addr_choose"
+            android:layout_marginTop="0dp"
+
+            >
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp">
+
+                <TextView
+                    android:id="@+id/order_confirm_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="收货人"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/order_confirm_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="电话"
+                    android:textSize="15sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="3dp">
+
+                <TextView
+                    android:id="@+id/order_confirm_address_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:paddingRight="20dp"
+                    android:paddingTop="20dp"
+                    android:text="地址"
+                    android:textSize="15sp" />
+            </TableRow>
+        </TableLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/order_confirm_butn_confr"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="#FFFFFF"
+            android:drawableRight="@drawable/imgputorder"
+            android:text="确认" />
+
+        <TextView
+            android:id="@+id/order_confirm_cost_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="70dp"
+            android:layout_toLeftOf="@id/order_confirm_butn_confr"
+            android:paddingBottom="13dp"
+            android:text="1000元" />
+
+        <TextView
+            android:id="@+id/order_confirm_tab_cost_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:layout_toLeftOf="@id/order_confirm_cost_sum"
+            android:paddingBottom="13dp"
+            android:text="合计" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <include layout="@layout/activity_category_title"
+           android:id="@+id/category_title"/>    
+   
+    <RelativeLayout
+        android:id="@+id/category_relativelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"        
+        >
+<!--         分类1-1 -->           
+           <ImageView 
+            android:id="@+id/category_level_1"
+            android:layout_width="60dp"
+            android:layout_height="60dp" 
+            android:layout_marginTop="5dp"
+            android:layout_alignParentLeft="true" 
+            android:layout_marginLeft="15dp"            
+            android:background="@drawable/dailylife" />
+           <TextView
+            android:id="@+id/category_level_1_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true" 
+            android:paddingLeft="15dp"  
+            android:layout_below="@id/category_level_1" 
+            android:text="生活服务"             
+               />
+           <!--         分类1-2 -->
+            <ImageView 
+            android:id="@+id/category_level_2"
+            android:layout_width="60dp"
+            android:layout_height="60dp" 
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/category_level_1"
+            android:layout_marginLeft="30dp"         
+            android:src="@drawable/women" /> 
+           <TextView
+            android:id="@+id/category_level_2_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/category_level_1_tv"
+            android:layout_marginLeft="30dp"
+            android:paddingLeft="20dp"  
+            android:layout_below="@id/category_level_1" 
+            android:text="女装"         
+               />            
+<!--         分类1-4 -->
+            <ImageView 
+            android:id="@+id/category_level_4"
+            android:layout_width="60dp"
+            android:layout_height="60dp" 
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"  
+            android:paddingRight="20dp"             
+            android:background="@drawable/food" /> 
+           <TextView
+            android:id="@+id/category_level_4_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:paddingRight="20dp"  
+            android:layout_below="@id/category_level_1" 
+            android:text="食品"             
+               />   
+               <!--         分类1-3 -->
+            <ImageView 
+            android:id="@+id/category_level_3"
+            android:layout_width="60dp"
+            android:layout_height="60dp" 
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@id/category_level_4" 
+            android:layout_marginRight="20dp"                      
+            android:background="@drawable/man" /> 
+           <TextView
+            android:id="@+id/category_level_3_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/category_level_4_tv"
+            android:layout_marginRight="40dp"
+            android:paddingRight="10dp"  
+            android:layout_below="@id/category_level_1" 
+            android:text="男装"             
+               />             
+    </RelativeLayout>
+    
+<android.support.v4.view.ViewPager  
+        android:id="@+id/viewpager_category"  
+        android:layout_width="fill_parent" 
+        android:layout_height="fill_parent"                 
+        />  
+        
+</LinearLayout>

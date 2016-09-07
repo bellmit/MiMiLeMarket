@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:id="@+id/my_coupon_item_left"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:background="#FAFFF0"
+        android:layout_marginLeft="20dp"
+
+        >
+
+        <TextView
+            android:id="@+id/my_coupon_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingLeft="20dp"
+            android:textColor="#FF4500"
+
+
+            android:text="满50元使用"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:id="@+id/my_coupon_item_date"
+            android:paddingTop="5dp"
+            android:paddingLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF4500"
+            android:textSize="10sp"
+            android:text="有效期至 2016-07-21 14:38"
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/my_coupon_item_money"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/my_coupon_item_left"
+        android:layout_alignParentRight="true"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15sp"
+        android:background="@drawable/coupon_orange"
+        android:textColor="#F5F5F5"
+        android:gravity="center"
+        android:text="￥3.00"
+        />
+
+
+</RelativeLayout>

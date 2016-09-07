@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <!--     立即购买界面的返回图标 -->
+    <ImageButton
+        android:id="@+id/purchase_confirm_ImageButton_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/gooback" />
+
+    <!--     立即购买界面里的标题 -->
+    <TextView
+        android:id="@+id/purchase_confirm_TextView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/purchase_confirm_textv_title"
+        android:textSize="30sp" />
+
+    <!-- 立即购买界面的头部分割线按钮 -->
+    <View
+        android:id="@+id/purchase_confirm_View_head"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/purchase_confirm_TextView_title"
+        android:layout_marginTop="5dp"
+        android:background="#000030" 
+        />
+    
+    <!-- 立即购买界面里的图片 -->
+    <ImageView
+        android:id="@+id/purchase_confirm_ImageView_goods"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/purchase_confirm_View_head"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/ic_launcher"
+        />
+    
+    <TableLayout
+        android:id="@+id/purchase_confirm_tablelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/purchase_confirm_View_head"
+        android:layout_marginTop="20dp"
+        android:layout_toRightOf="@id/purchase_confirm_ImageView_goods" 
+        android:layout_marginLeft="10dp"
+        >
+     
+        <TableRow >
+
+            <TextView
+                android:id="@+id/purchase_confirm_TextView_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/purchase_confirm_textv_price"
+                android:textSize="20sp" />
+        </TableRow>
+    
+          <TableRow 
+              android:layout_marginTop="7dp">
+            
+                <TextView 
+                android:id="@+id/purchase_confirm_TextView_save"
+                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:text="@string/purchase_confirm_textv_save"
+                android:textSize="20sp"
+                />       
+          </TableRow>
+         </TableLayout> 
+
+    
+    <RelativeLayout
+        android:id="@+id/purchase_confirm_RelativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_below="@id/purchase_confirm_ImageView_goods"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        >
+
+        <LinearLayout
+        android:id="@+id/purchase_confirm_LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        >
+            <TextView
+                android:id="@+id/purchase_confirm_TextView_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/purchase_confirm_textv_size"
+                android:textSize="20sp" />
+            
+            <RadioGroup 
+                 android:id="@+id/purchase_confirm_RadioGroup_size"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="7dp"
+                 android:orientation="horizontal">
+                 <RadioButton 
+                     android:id="@+id/purchase_confirm_RadioButton_S"
+                     android:text="S"
+                     android:checked="true"/>
+                 <RadioButton 
+                     android:id="@+id/purchase_confirm_RadioButton_M"
+                     android:layout_marginLeft="20dp"
+                     android:text="M"/>  
+                 <RadioButton 
+                     android:id="@+id/purchase_confirm_RadioButton_L"
+                     android:layout_marginLeft="20dp"
+                     android:text="L"/>      
+             </RadioGroup>
+             </LinearLayout>
+    
+         <LinearLayout
+        android:id="@+id/purchase_confirm_LinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:layout_below="@id/purchase_confirm_LinearLayout1"
+        android:layout_marginTop="15dp"
+        >
+                <TextView 
+                android:id="@+id/purchase_confirm_TextView_color"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/purchase_confirm_textv_color"
+                android:textSize="20sp"
+                />   
+               
+                <RadioGroup 
+                 android:id="@+id/purchase_confirm_RadioGroup_color"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="7dp"
+                 android:orientation="horizontal">
+                 <RadioButton
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/purchase_confirm_RadioButton_color1"
+                     android:hint="红"
+                     android:checked="true"/>
+                 <RadioButton
+                     android:layout_height="wrap_content"
+                     android:layout_width="wrap_content"
+                     android:id="@+id/purchase_confirm_RadioButton_color2"
+                     android:layout_marginLeft="20dp"
+                     android:hint="绿"/>
+
+                 <RadioButton
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:id="@+id/purchase_confirm_RadioButton_color3"
+                     android:layout_marginLeft="20dp"
+                     android:hint="蓝"/>
+             </RadioGroup>
+          </LinearLayout>
+          
+           
+         <LinearLayout
+        android:id="@+id/purchase_confirm_LinearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal"
+        android:layout_below="@id/purchase_confirm_LinearLayout2"
+        android:layout_marginTop="15dp"
+        >
+            <TextView 
+                android:id="@+id/purchase_confirm_TextView_number"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/purchase_confirm_textv_number"
+                android:textSize="20sp"
+                />
+            
+            <EditText 
+                android:id="@+id/purchase_confirm_EditText_num"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:hint="input number"
+                android:textSize="20sp"
+                />
+           </LinearLayout>
+     </RelativeLayout>
+     
+    <!--     立即购买界面界面的“确认”按钮 -->
+     <Button 
+                android:id="@+id/purchase_confirm_Button_ack"
+                android:layout_alignParentBottom="true"
+                android:layout_height="40dp"
+                android:layout_width="140dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginLeft="10dp"
+                android:text="确认"
+                android:textSize="18sp"
+                />
+     <!--     立即购买界面界面的“取消”按钮 -->
+     <Button 
+                android:id="@+id/purchase_confirm_Button_cancel"
+                android:layout_alignParentBottom="true"
+                android:layout_height="40dp"
+                android:layout_width="140dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginLeft="170dp"
+                android:text="取消"
+                android:textSize="18sp"
+                />
+
+</RelativeLayout>

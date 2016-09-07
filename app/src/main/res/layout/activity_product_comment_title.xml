@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+
+    <!--     商品详情_详情界面里的返回按钮 -->
+    <ImageButton
+        android:id="@+id/product_comment_ImageButton_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/gooback"
+        android:contentDescription="@string/app_name" />
+
+    <!--     商品详情_详情界面的顶部线性布局 -->
+    <RelativeLayout
+        android:id="@+id/goods_detail_linearlay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+
+        <!--     商品详情_详情界面的“详情”按钮 -->
+        <Button
+            android:id="@+id/product_comment_Button_detail"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/goods_detail_Button_comment"
+            android:background="#F5F5F5"
+            android:text="@string/goods_brief_btn_detail"
+            android:textSize="18sp" />
+        <!--     商品详情_详情界面的“评价”按钮 -->
+        <Button
+            android:id="@+id/product_comment_Button_comment"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="#F5F5F5"
+            android:text="@string/goods_brief_btn_comment"
+            android:textSize="18sp" />
+    </RelativeLayout>
+</LinearLayout>

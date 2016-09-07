@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- 钱包界面里的返回按钮 -->
+
+    <ImageButton
+        android:id="@+id/account_balance_ImageButton_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/gooback"
+        android:contentDescription="@string/app_name" />
+
+    <!-- 钱包界面里的标题按钮 -->
+
+    <TextView
+        android:id="@+id/account_balance_TextView_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/account_balance_textv_title"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
+    <!-- 钱包界面里的头部分割线 -->
+    <ImageView
+        android:id="@+id/account_balance_ImageView_imageline1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/account_balance_TextView_title"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/colorline" />
+
+    <!-- 钱包界面里余额显示 -->
+    <TextView
+        android:id="@+id/account_balance_TextView_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_balance_ImageView_imageline1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/account_balance_textv_balance"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+
+    <!-- 钱包界面里的充值按钮 -->
+    <Button
+        android:id="@+id/account_balance_Button_publish"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/account_balance_TextView_balance"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/imgchongzhi" />
+
+    <!-- 钱包界面里的中部分割线 -->
+    <!-- 钱包界面里的头部分割线 -->
+    <ImageView
+        android:id="@+id/account_balance_ImageView_imageline2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@id/account_balance_Button_publish"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/colorline" />
+
+    <!-- 钱包界面里充值金额提示-->
+    <TextView
+        android:id="@+id/account_balance_TextView_loadmoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_balance_ImageView_imageline2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/account_balance_textv_loadmoney"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <!-- 钱包界面里充值金额输入-->
+    <EditText
+        android:id="@+id/account_balance_EditText_loadmoney"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_balance_ImageView_imageline2"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@id/account_balance_TextView_loadmoney"
+        android:hint="please input money"
+        android:inputType="numberDecimal"
+        android:textSize="20sp"
+        android:visibility="gone" />
+
+    <!-- 钱包界面里确认充值按钮-->
+    <Button
+        android:id="@+id/account_balance_Button_doload"
+        android:layout_width="70dp"
+        android:layout_height="90dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/account_balance_EditText_loadmoney"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:background="#FFFFFF"
+        android:drawableTop="@drawable/checkchongzhi"
+        android:text="@string/account_balance_btn_doload"
+        android:textSize="15sp"
+        android:visibility="gone"
+         />
+
+</RelativeLayout>

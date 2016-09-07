@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF" >
+    
+<!--    扫一扫  -->
+    <ImageButton
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/member_center_ImageButton_camera"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/search"
+        />
+<!--     图标 -->
+    <ImageView
+        android:id="@+id/member_center_ImageView_headPicture"
+        android:layout_height="80dp"
+        android:layout_width="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="90dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/mimile" 
+        />
+    
+<!--     用户名 -->
+     <TextView
+                android:id="@+id/member_center_TextView_username"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/member_center_ImageView_headPicture"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/member_center_TextView_textusername"  
+                android:textSize="15sp"
+    />
+<!--      等级 -->
+    <TextView
+                android:id="@+id/member_center_TextView_level"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_toRightOf="@id/member_center_TextView_username"
+                android:layout_below="@id/member_center_ImageView_headPicture"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:text="@string/member_center_TextView_textlevel"  
+                android:textSize="15sp"
+    />
+<!-- 设置 -->
+   <Button
+        android:id="@+id/member_center_ImageButton_set"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/set"
+        /> 
+        
+   
+   <!--     直线 -->
+            <View
+                android:id="@+id/member_center_line1"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_below="@id/member_center_TextView_username"
+                android:layout_marginTop="5dp"
+                android:background="#696969" />
+<!--             我的订单 -->
+      <TextView
+                android:id="@+id/member_center_TextView_myorder"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_below="@id/member_center_line1"
+                android:text="@string/member_center_TextView_textMyOrder"  
+                android:textSize="18sp"
+                android:textColor="#eb4f38"
+    />     
+     <!--     直线 -->
+            <View
+                android:id="@+id/member_center_line2"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_below="@id/member_center_TextView_myorder"
+                android:layout_marginTop="5dp"
+                android:background="#696969" /> 
+                
+            
+     <LinearLayout 
+         android:id="@+id/member_center_linearlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/member_center_line2"
+       >
+    
+   <!--     待付款 -->  
+     <Button 
+                android:id="@+id/member_center_Button_waitToPay"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textwaitToPay"
+                android:textSize="15sp"
+                android:background="#FFFFFF"
+                android:drawableTop="@drawable/imgunpaid"
+
+                android:layout_marginBottom="2dp"
+                />
+     <!--     已付款 -->
+     <Button 
+                android:id="@+id/member_center_Button_waitToExpress"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textAlreadyPay"
+                android:textSize="15sp"
+                android:background="#FFFFFF"
+                android:drawableTop="@drawable/imgpaid"
+         android:layout_marginBottom="2dp"
+                />
+     <!--     待收货-->
+     <Button 
+                android:id="@+id/member_center_Button_waitToGet"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textWaitToGet"
+                android:textSize="15sp"
+                android:background="#FFFFFF"
+                 android:drawableTop="@drawable/imgweishouhuo"
+         android:layout_marginBottom="2dp"
+                />
+      <Button 
+                android:id="@+id/member_center_Button_waitToComment"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textWaitToComment"
+                android:textSize="15sp"
+                android:background="#FFFFFF"
+                 android:drawableTop="@drawable/imgpingjia"
+          android:layout_marginBottom="2dp"
+                 
+                />
+     
+        </LinearLayout>
+        
+      <!--     直线 -->
+            <View
+                android:id="@+id/member_center_line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/member_center_linearlayout1"
+                android:layout_marginTop="5dp"
+                android:background="#696969" />  
+                
+            <!--             我的资产 -->
+      <TextView
+                android:id="@+id/member_center_TextView_myMoney"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_below="@id/member_center_line3"
+                android:text="@string/member_center_TextView_textMyMoney"  
+                android:textSize="18sp"
+                android:textColor="#eb4f38"
+             
+    />     
+     
+     
+      <!--     直线 -->
+            <View
+                android:id="@+id/member_center_line4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/member_center_TextView_myMoney"
+                android:layout_marginTop="5dp" 
+                android:background="#696969" />  
+                
+              
+        <LinearLayout 
+         android:id="@+id/member_center_linearlayout2"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/member_center_line4"
+       >
+    
+   <!--     余额 -->  
+     <Button 
+                android:id="@+id/member_center_Button_balance"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textbalance"
+               android:textSize="15sp"
+                android:background="#FFFFFF"
+                android:drawableTop="@drawable/imgaccount"
+                android:gravity="center_horizontal"
+         android:layout_marginBottom="2dp"
+                />
+     <!--     优惠券 -->
+     <Button 
+                android:id="@+id/member_center_Button_coupon"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textcoupon"
+               android:textSize="15sp"
+                android:background="#FFFFFF"
+                android:drawableTop="@drawable/imgcoupon"
+                 android:gravity="center_horizontal"
+         android:layout_marginBottom="2dp"
+                />
+     <!--     积分-->
+     <Button 
+                android:id="@+id/member_center_Button_integration"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:text="@string/member_center_Button_textIntegration"
+               android:textSize="15sp"
+                android:background="#FFFFFF"
+                android:drawableTop="@drawable/imgsocer"
+
+         android:layout_marginBottom="2dp"
+                />
+     
+     
+        </LinearLayout>
+        
+        <!--     直线 -->
+            <View
+                android:id="@+id/member_center_line5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/member_center_linearlayout2"
+                android:layout_marginTop="5dp" 
+                android:background="#696969" />  
+                
+            <Button 
+                android:id="@+id/member_center_Button_address"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/member_center_line5"
+                android:layout_marginTop="20dp"
+                android:text="@string/member_center_Button_textAddress"
+                android:textSize="18sp"
+                 android:background="#FFFFFF"
+                />
+            <View
+                android:id="@+id/member_center_line6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/member_center_Button_address"
+                android:layout_marginTop="5dp" 
+                android:background="#696969" />
+</RelativeLayout>

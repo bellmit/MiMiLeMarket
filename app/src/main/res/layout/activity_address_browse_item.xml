@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/address_browse_item_title"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/address_browse_item_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="陈俊先"
+            />
+
+        <TextView
+            android:id="@+id/address_browse_item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="18482188024"
+            />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/address_browse_item_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_browse_item_title"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:singleLine="false"
+      />
+
+
+    <Button
+        android:id="@+id/address_browse_item_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_browse_item_address"
+        android:layout_alignParentRight="true"
+        android:text="@string/address_browse_delete"
+        android:background="#00000000"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp"
+       />
+
+    <Button
+        android:id="@+id/address_browse_item_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_browse_item_address"
+        android:layout_toLeftOf="@+id/address_browse_item_delete"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:text="@string/address_browse_update"
+        android:background="#00000000"
+        android:textSize="15dp"
+       />
+
+
+
+
+</RelativeLayout>

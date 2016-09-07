@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    
+
+    <ImageView
+        android:id="@+id/category_title_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:background="@drawable/gooback" />
+
+    <EditText
+        android:layout_toRightOf="@+id/category_title_image"
+        android:layout_toLeftOf="@+id/category_title_button"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/category_title_editText"
+        android:background="#d7ccc8"
+        android:layout_width="match_parent"        
+        android:layout_height="30dp" />
+
+    <Button
+        android:id="@+id/category_title_button"
+        android:layout_marginTop="13dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/magnifier"
+        android:layout_alignParentRight="true"
+
+        />
+     <ImageView
+        android:id="@+id/category_title_imageline"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/category_title_image"
+        android:background="@drawable/colorline" />
+
+</RelativeLayout>

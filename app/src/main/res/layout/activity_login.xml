@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+     android:background="@drawable/loginn">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="5dp"
+        android:textColor="#FFFFFF" 
+        android:text="帮助" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-18dp"
+        android:text="米米乐账户登录"
+         android:textColor="#000000" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginTop="5dp"
+        android:background="#696969" />
+
+       <ImageButton
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="-24dp"
+        android:id="@+id/password_modify_ImageButton_back"
+        android:layout_height="20dp"
+        android:layout_width="20dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/gooback"
+        />
+    
+
+    <RelativeLayout
+        android:id="@+id/login_div"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dip"
+        android:padding="15dip" >
+
+        <TextView
+            android:id="@+id/login_user_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#FFFFFF"
+            android:text="@string/login_label_username" />
+
+        
+        <EditText
+            android:id="@+id/username_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_user_input"
+            android:hint="@string/login_username_hint"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/login_password_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username_edit"
+            android:layout_marginTop="3dp"
+            android:textColor="#FFFFFF"
+            android:text="@string/login_label_password" />
+
+        <Button
+            android:id="@+id/signin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/password_edit" 
+            
+            android:layout_below="@id/password_edit"
+            android:background="#00000000"
+            android:text="@string/login_label_signin"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
+             />
+
+        <EditText
+            android:id="@+id/password_edit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/login_password_input"
+            android:layout_below="@+id/login_password_input"
+            android:ems="10"
+            android:hint="@string/login_password_hint"
+            android:inputType="textPassword"
+            android:password="true"
+            android:singleLine="true" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/register_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="#00000000"
+            android:text="@string/login_register_link"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FF0066CC" />
+
+        <TextView
+            android:id="@+id/modifypassword_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:background="#00000000"
+            
+            android:text="修改密码"
+            android:textColor="#FFFFFF"
+            android:textColorLink="#FF0066CC" />
+    </RelativeLayout>
+
+</LinearLayout>

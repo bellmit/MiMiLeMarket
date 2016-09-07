@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+ 
+    <RelativeLayout 
+        android:id="@+id/MainPage_RelativeLayout_head"
+        android:layout_width="match_parent"  
+        android:layout_height="50dp"  
+        android:layout_marginTop="0dp">
+
+    <ImageView
+        android:id="@+id/recommend_category_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="3dp"
+        android:background="@drawable/category_button" />
+
+    <EditText
+        android:layout_toRightOf="@+id/recommend_category_button"
+        android:layout_toLeftOf="@+id/recommend_search_button"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:id="@+id/recommend_search_editText"
+        android:background="#d7ccc8"
+        android:layout_width="match_parent"        
+        android:layout_height="30dp" />
+
+    <Button
+        android:id="@+id/recommend_search_button" 
+        android:layout_marginTop="13dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/magnifier"
+        android:layout_alignParentRight="true"/>
+    
+    </RelativeLayout>
+       
+    <ImageView
+        android:id="@+id/MainPage_ImageView_linehead"
+        android:layout_below="@id/MainPage_RelativeLayout_head"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/colorline"
+        android:contentDescription="@string/app_name"/>        
+        
+  	        
+      <!--   	    首页新品推荐 -->   
+      <RelativeLayout
+            android:id="@+id/MainPage_RelativeLayout_new"  
+            android:layout_width="match_parent"  
+            android:layout_height="260dp"  
+            android:layout_below="@id/MainPage_ImageView_linehead"
+            android:layout_marginTop="5dp"
+             >    
+  	
+        <TextView
+        android:id="@+id/MainPage_TextView_linenew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="——最新上市——"
+        android:textSize="15sp"
+         />
+        
+       <android.support.v4.view.ViewPager
+           android:id="@+id/viewPager_NewGoods"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:layout_below="@id/MainPage_TextView_linenew"
+           android:layout_marginTop="5dp" />
+    <LinearLayout   
+        android:id="@+id/ll_recommend"   
+        android:orientation="horizontal"  
+        android:layout_width="wrap_content"   
+        android:layout_height="wrap_content"   
+        android:layout_marginBottom="24.0dip"   
+        android:layout_alignParentBottom="true"   
+        android:layout_centerHorizontal="true">  
+          
+        <ImageView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_gravity="center_vertical"  
+            android:clickable="true"  
+            android:padding="15.0dip"             
+            android:src="@drawable/welcome_dot" />  
+  
+        <ImageView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_gravity="center_vertical"  
+            android:clickable="true"  
+            android:padding="15.0dip"  
+            android:src="@drawable/welcome_dot" /> 
+  
+        <ImageView  
+            android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_gravity="center_vertical"  
+            android:clickable="true"  
+            android:padding="15.0dip"  
+            android:src="@drawable/welcome_dot" />  
+     
+    </LinearLayout>        
+  	           
+  	    </RelativeLayout>
+  	       
+           
+      <RelativeLayout  
+            android:id="@+id/MainPage_RelativeLayout_hot_discount"  
+            android:layout_width="match_parent"  
+            android:layout_height="wrap_content"  
+            android:layout_below="@id/MainPage_RelativeLayout_new"
+            android:layout_marginTop="50dp"            
+             >
+
+  	  		<ImageView
+  	  		android:id="@+id/image_hot_sell"
+  	  		android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:layout_weight="1"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="20dp"
+            android:src="@drawable/hot_sell_image"/>
+  	  		<TextView
+  	  		android:layout_width="wrap_content"  
+            android:layout_height="wrap_content" 
+            android:layout_below="@id/image_hot_sell"
+            
+            android:layout_marginTop="10dp"
+            android:layout_alignParentLeft="true"
+                android:layout_alignLeft="@+id/image_hot_sell"
+            android:paddingLeft="29dp"
+            android:textSize="20sp"           
+            android:text="热卖"  
+  	  		    />
+  	  
+  	  	
+      
+            <ImageView
+  	  		android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"  
+            android:id="@+id/image_discount"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:src="@drawable/discount_image"/> 
+            <TextView
+  	  		android:layout_width="wrap_content"  
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+			android:layout_marginTop="10dp"
+            android:layout_below="@id/image_discount"  
+            android:text="折扣"
+            android:textSize="20sp"              
+                />
+	    
+       
+  	  		<ImageView
+  	  		android:layout_width="wrap_content"  
+            android:layout_height="wrap_content" 
+            android:id="@+id/image_buy_quick"
+            android:layout_alignParentRight="true"
+            android:paddingRight="20dp"
+            android:layout_weight="1"
+            android:src="@drawable/buy_quick_image"/>
+  	  		<TextView
+  	  		android:layout_width="wrap_content"  
+            android:layout_height="wrap_content" 
+            android:layout_below="@id/image_buy_quick"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:paddingRight="27dp"
+            android:textSize="20sp"
+            android:text="秒杀"  
+  	  		    />   	  		     	  		   	  	  	  		  	          
+  	 </RelativeLayout>   	
+
+</RelativeLayout>
+
+
+

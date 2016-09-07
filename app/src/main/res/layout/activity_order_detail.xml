@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   
+    android:background="#FFFFFF"
+    >
+
+    <Button
+        android:id="@+id/order_detail_return"
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/gooback"
+         />
+    <TextView
+        android:id="@+id/order_detail_label_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="订单详情" 
+        android:textColor="#000000"
+        android:textSize="25sp"
+        />
+    <ImageView
+        android:id="@+id/order_detail_ImageView_imageline"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/colorline"
+        android:layout_below="@id/order_detail_return"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:id="@+id/order_detail_label_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/order_detail_ImageView_imageline"
+        android:layout_marginTop="5dp"
+        android:text="@string/order_detail_label_order" 
+        android:textSize="20sp"
+        />
+        <TextView
+            android:id="@+id/order_detail_label_order_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_detail_label_order"
+        android:layout_marginTop="5dp"
+            android:text="@string/order_detail_label_order_details" 
+            android:textSize="20sp"
+            />
+          
+     
+        <TextView
+            android:id="@+id/order_detail_label_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_below="@id/order_detail_label_order_details"
+        android:layout_marginTop="5dp"
+            android:text="@string/order_detail_label_order_number" 
+            android:textSize="20sp"
+            />
+        
+  
+     
+        <TextView
+            android:id="@+id/order_detail_label_order_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_detail_label_order_number"
+        android:layout_marginTop="5dp"
+            android:text="@string/order_detail_label_order_time"
+            android:textSize="20sp"
+             />
+       
+   
+    
+     
+        <TextView
+            android:id="@+id/order_detail_label_product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/order_detail_label_order_time"
+        android:layout_marginTop="5dp"
+            android:text="@string/order_detail_label_product_name" 
+             android:textSize="20sp"
+            />
+       
+   
+        <TextView
+            android:id="@+id/order_detail_label_price_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+             android:layout_below="@id/order_detail_label_product_name"
+        android:layout_marginTop="5dp"
+            android:text="@string/order_detail_label_price_point"
+             android:textSize="20sp" />
+       
+     
+   
+</RelativeLayout>

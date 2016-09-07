@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/address_selected_item_top"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/address_selected_item_name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="陈俊先"
+            />
+
+        <TextView
+            android:id="@+id/address_selected_item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/address_selected_item_name"
+            android:text="18482188024"
+            android:layout_marginRight="5dp"
+            />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/address_selected_item_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_selected_item_top"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="西南交通大学犀浦校区"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>

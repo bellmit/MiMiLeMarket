@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    >
+
+    <include layout="@layout/activity_address_browse_title"
+             android:id="@+id/address_browse_title"/>
+
+    <ImageView
+        android:layout_below="@+id/address_browse_title"
+        android:id="@+id/address_browse_divider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#000000"
+        />
+
+
+    <ListView
+        android:id="@+id/address_browse_listView"
+        android:layout_below="@+id/address_browse_divider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+
+
+</RelativeLayout>

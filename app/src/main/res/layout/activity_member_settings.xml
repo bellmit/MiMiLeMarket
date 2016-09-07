@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+        android:background="#FFFFFF"
+        >
+
+<!--     返回 -->
+    <ImageButton
+        android:id="@+id/member_settings_ImageButton_back"
+        android:layout_height="40dp"
+        android:layout_width="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/gooback"
+        />
+    
+        <TextView
+                android:id="@+id/member_settings_TextView_mainSet"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+               
+                android:layout_marginTop="10dp"
+                android:text="@string/member_settings_TextView_textMainSet"  
+                android:textSize="25sp"
+                android:textColor="#000000"
+    />
+        
+         <Button 
+                android:id="@+id/member_settings_Button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                android:text="@string/member_settings_Button_textSave"
+                android:textSize="20sp"
+                
+                />
+        
+         <ImageView
+        android:id="@+id/member_settings_ImageView_imageline"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/colorline"
+        android:layout_below="@id/member_settings_Button_save"
+        android:layout_marginTop="5dp"
+        />
+       
+    <TableLayout
+        android:id="@+id/member_settings_tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/member_settings_ImageView_imageline" 
+        android:gravity="left"
+        >
+        
+   
+       
+            
+       <!--       用户名   -->       
+   <TableRow android:id="@+id/member_settings_tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="3dp">     
+
+        <TextView
+                android:id="@+id/member_settings_TextView_username"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" 
+                android:paddingTop="10dp"
+                android:text="@string/member_settings_TextView_textUserName"  
+                android:textSize="25sp"
+                android:textColor="#000000"
+                />
+        </TableRow>
+         <!--     直线 -->
+            <View
+                android:id="@+id/member_settings_line3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:paddingRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="#696969" />
+        
+ <TableRow android:id="@+id/member_settings_tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_marginTop="10dp"
+            >     
+        
+        <!--       邮箱   -->
+        <TextView
+                android:id="@+id/member_settings_TextView_eMail"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" 
+                android:paddingTop="3dp"
+                android:layout_weight="1"
+                android:text="@string/member_settings_TextView_textEmail"  
+                android:textSize="25sp"
+                android:textColor="#000000"
+                />
+
+        <EditText
+                android:id="@+id/member_settings_EditText_eMail"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" 
+                android:layout_weight="7"
+                android:paddingTop="3dp"
+                android:textSize="15sp"
+                android:hint="@string/member_settings_EditText_textEMail"
+                />
+        
+        </TableRow>
+       <View
+                android:id="@+id/member_settings_line4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:paddingTop="0dp"
+                android:background="#696969" />  
+                
+  <TableRow android:id="@+id/member_settings_tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:layout_marginTop="10dp"
+            >    
+        
+        <!--       电话   -->
+        <TextView
+                android:id="@+id/member_settings_TextView_phone"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" 
+                android:paddingTop="3dp"
+                android:layout_weight="1"
+                android:text="@string/member_settings_TextView_textPhone"  
+                android:textSize="25sp"
+                android:textColor="#000000"
+                />
+
+        <EditText
+                android:id="@+id/member_settings_EditText_phone"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent" 
+                android:layout_weight="7"
+                android:paddingTop="3dp"
+                android:textSize="15sp"
+                android:hint="@string/member_settings_EditText_textPhone"
+                />
+        
+        </TableRow>
+        
+        </TableLayout>
+        <ImageView
+        android:id="@+id/member_settings_ImageView_imageline2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/colorline"
+        android:layout_below="@id/member_settings_tableLayout"
+        android:layout_marginTop="5dp"
+        />
+        
+     <Button 
+                android:id="@+id/member_settings_Button_about"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/member_settings_ImageView_imageline2"
+                android:layout_marginTop="20dp"
+                android:gravity="bottom"
+                
+                android:background="#FFFFFF"
+                android:drawableLeft="@drawable/imgabout"
+                android:text="@string/member_settings_Button_textAbout"
+                android:textSize="30sp"
+                />
+     <Button 
+                android:id="@+id/member_settings_Button_exit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/member_settings_ImageView_imageline2"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="20dp"
+                android:background="#FFFFFF"
+                android:drawableLeft="@drawable/imgexit"
+                android:text="@string/member_settings_Button_textExit"
+                android:textSize="30sp"
+                
+                />
+     
+</RelativeLayout >

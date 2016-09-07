@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <!--     分类2-1  到     2-3 -->
+    <RelativeLayout
+        android:id="@+id/manclothes_relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        >    
+<!--         分类2-1 -->
+        <ImageView 
+            android:id="@+id/category_level_31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_alignParentLeft="true"            
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/inclothes" />  
+           <TextView
+            android:id="@+id/category_level_31_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"  
+            android:paddingLeft="30dp" 
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/category_level_31" 
+            android:text="内搭" />       
+<!--         分类2-2 -->            
+        <ImageView 
+            android:id="@+id/category_level_32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_marginTop="3dp"            
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/mancoat" /> 
+           <TextView
+            android:id="@+id/category_level_32_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"            
+            android:layout_below="@id/category_level_32" 
+            android:text="外套" />             
+<!--         分类2-3 -->                           	        
+        <ImageView 
+            android:id="@+id/category_level_33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                    
+            android:layout_alignParentRight="true" 
+            android:paddingRight="22dp"           
+            android:src="@drawable/manpants" /> 
+           <TextView
+            android:id="@+id/category_level_33_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:paddingRight="30dp" 
+            android:layout_below="@id/category_level_33" 
+            android:text="裤装" />                  	
+      </RelativeLayout>	
+<!--     分类2-4  到     2-6 -->      
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/manclothes_relativeLayout1"
+         android:layout_marginTop="40dp"        
+        >
+           
+<!--            分类2-4 -->
+        <ImageView 
+            android:id="@+id/category_level_34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"  
+            android:layout_alignParentLeft="true"            
+            android:layout_marginLeft="22dp" 
+            android:src="@drawable/bigsize" />  
+           <TextView
+            android:id="@+id/category_level_34_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true" 
+            android:paddingLeft="30dp"  
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/category_level_34" 
+            android:text="大码" />       
+<!--         分类2-5 -->            
+        <ImageView 
+            android:id="@+id/category_level_35"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"              
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/old" /> 
+           <TextView
+            android:id="@+id/category_level_35_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"            
+            android:layout_below="@id/category_level_35" 
+            android:text="中老年" />             
+<!--         分类2-6 -->                           	        
+        <ImageView 
+            android:id="@+id/category_level_36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"                    
+            android:layout_alignParentRight="true" 
+            android:paddingRight="22dp"           
+            android:src="@drawable/couple" /> 
+           <TextView
+            android:id="@+id/category_level_36_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" 
+            android:paddingRight="30dp" 
+            android:layout_below="@id/category_level_36" 
+            android:text="情侣" />             
+     </RelativeLayout>
+
+</RelativeLayout>
