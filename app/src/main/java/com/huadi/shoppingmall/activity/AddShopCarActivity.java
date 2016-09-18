@@ -16,17 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huadi.shoppingmall.R;
-
-
+import com.huadi.shoppingmall.db.dao.ProductDao;
+import com.huadi.shoppingmall.db.dao.ShopCarDao;
 import com.huadi.shoppingmall.model.Product;
 import com.huadi.shoppingmall.model.ShopCar;
-import com.huadi.shoppingmall.util.ImageUtil;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.DownloadFileListener;
-import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.SaveListener;
 
 /**
  * Created by smartershining on 16-7-22.
@@ -34,8 +27,8 @@ import cn.bmob.v3.listener.SaveListener;
 
 
 public class AddShopCarActivity extends Activity implements View.OnClickListener {
-    private String productID;     //从详情页面传过来的商品ID
-    private String log_user;      //从详情页面传过来的用户ID
+    private int productID;  //从详情页面传过来的商品ID
+    private int log_user;  //从详情页面传过来的用户ID
     private Product product;
 
     private ImageButton ThisActivity_back;  //返回按钮
@@ -66,54 +59,12 @@ public class AddShopCarActivity extends Activity implements View.OnClickListener
 
         //获取从商品详情界面传递下来的数据
         Intent intent = getIntent();
-        this.productID = intent.getStringExtra("product_id");
-        BmobQuery<Product> query = new BmobQuery<>();
-        query.getObject(productID, new QueryListener<Product>() {
-            @Override
-            public void done(Product product, BmobException e) {
-                if (e == null) {
-                    //取出尺寸进行设置
-                    String str1 = product.getSize().toString();
-                    /*
-                    String[] strs1 = str1.split(",");
-                    size_s.setText(strs1[0]);
-                    size_m.setText(strs1[1]);
-                    size_l.setText(strs1[2]);
-
-                    //取出颜色进行展示
-                    String str = product.getColor().toString();
-                    String[] strs = str.split(",");
-                    color1.setText(strs[0]);
-                    color2.setText(strs[1]);
-                    color3.setText(strs[2]); */
-
-                    //设置图片
-
-
-                    //设置价格和库存
-                    Product_price.append(" " + String.valueOf(product.getPrice()));
-                    Product_num.append(" " + String.valueOf(product.getSalNum()));
-                    product.getImage().download(new DownloadFileListener() {
-                        @Override
-                        public void done(String s, BmobException e) {
-                            if (e == null) {
-                                product_image.setImageBitmap(ImageUtil.getLoacalBitmap(s));
-                            }
-                        }
-
-                        @Override
-                        public void onProgress(Integer integer, long l) {
-
-                        }
-                    });
-                }
-            }
-        });
-
+        this.productID = intent.getIntExtra("product_id", 0);
+        this.product = new ProductDao(this).getProductById(this.productID);
 
         //获取全局的用户ID
         final SharedPreferences settings = getSharedPreferences("settings", 0);
-        this.log_user = settings.getString("user_id", "0");
+        this.log_user = settings.getInt("user_id", 0);
 
         //ThisActivity_title=(TextView) findViewById(R.id.purchase_confirm_TextView_title);
         ThisActivity_back = (ImageButton) findViewById(R.id.addshopcar_confirm_ImageButton_back);
@@ -134,13 +85,33 @@ public class AddShopCarActivity extends Activity implements View.OnClickListener
         Bok = (Button) findViewById(R.id.addshopcar_confirm_Button_bok);
         Bcancel = (Button) findViewById(R.id.addshopcar_confirm_Button_bcancle);
 
+        //取出尺寸进行设置
+        String str1 = this.product.getSize().toString();
+        String[] strs1 = str1.split(",");
+        size_s.setText(strs1[0]);
+        size_m.setText(strs1[1]);
+        size_l.setText(strs1[2]);
+
+        //取出颜色进行展示
+        String str = this.product.getColor().toString();
+        String[] strs = str.split(",");
+        color1.setText(strs[0]);
+        color2.setText(strs[1]);
+        color3.setText(strs[2]);
+
+        //设置图片
+        int resId = getResources().getIdentifier(this.product.getImage(), "drawable", "src/main/res/");
+        product_image.setImageResource(resId);
+
+        //设置价格和库存
+        Product_price.append(" " + String.valueOf(this.product.getPrice()));
+        Product_num.append(" " + String.valueOf(this.product.getSalNum()));
 
         //注册监听
         ThisActivity_back.setOnClickListener(this);
         Bok.setOnClickListener(this);
         Bcancel.setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View v) {
@@ -158,39 +129,39 @@ public class AddShopCarActivity extends Activity implements View.OnClickListener
                             Toast.LENGTH_SHORT).show();
                     Product_num.setText(null);
                 } else {
-
+                    ShopCarDao shopcar_op = new ShopCarDao(this);
                     int ShopCarNum = Integer.parseInt(Product_num.getText().toString());
+                    //该商品已存在购物车中
+                    if (shopcar_op.findShopCarByUserIdAndProductId(this.log_user, this.productID) == true) {
+                        Toast.makeText(this, "该商品已经在购物车",
+                                Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(this, ProductDetail.class);
+                        //跳转到商品详情界面
+                        startActivity(intent1);
+                    }
+                    //该商品不存在购物车中
+                    else if (shopcar_op.findShopCarByUserIdAndProductId(this.log_user, this.productID) == false) {
+                        //新建一个购物车记录并添加到数据库中
 
+                        ShopCar shop_car = new ShopCar();
+                        shop_car.setProduct_id(this.productID);
+                        shop_car.setUser_id(this.log_user);
+                        shop_car.setProduct_num(ShopCarNum);
+                        shopcar_op.saveShopCar(shop_car);
 
-                    //新建一个购物车记录并添加到数据库中
-
-                    ShopCar shop_car = new ShopCar();
-                    shop_car.setProduct_id(this.productID);
-                    shop_car.setUser_id(this.log_user);
-                    shop_car.setNumber(ShopCarNum);
-                    shop_car.save(new SaveListener<String>() {
-                        @Override
-                        public void done(String s, BmobException e) {
-                            if (e == null) {
-                                Toast.makeText(AddShopCarActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-
-                            }
-                        }
-
-                    });
-                    Intent intent1 = new Intent(AddShopCarActivity.this, ProductDetail.class);
-                    intent1.putExtra("product_id", productID);
-
-                    startActivity(intent1);
-
+                        Toast.makeText(this, "添加成功", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(this, ProductDetail.class);
+                        intent1.putExtra("product_id", productID);
+                        startActivity(intent1);
+                    }
                 }
-            } else if (v == Bcancel) {
-                Intent intent2 = new Intent(this, ProductDetail.class);
-                startActivity(intent2);
-            } else if (v == ThisActivity_back) {
-                Intent intent3 = new Intent(this, ProductDetail.class);
-                startActivity(intent3);
             }
+        } else if (v == Bcancel) {
+            Intent intent2 = new Intent(this, ProductDetail.class);
+            startActivity(intent2);
+        } else if (v == ThisActivity_back) {
+            Intent intent3 = new Intent(this, ProductDetail.class);
+            startActivity(intent3);
         }
     }
 }

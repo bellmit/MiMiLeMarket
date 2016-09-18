@@ -10,16 +10,16 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+
 import com.huadi.shoppingmall.Adapter.AddressAdapter;
+import com.huadi.shoppingmall.Adapter.CouponAdapter;
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
-
+import com.huadi.shoppingmall.db.dao.AddressDao;
 import com.huadi.shoppingmall.model.Address;
-import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by smartershining on 16-7-19.
@@ -27,19 +27,23 @@ import cn.bmob.v3.listener.FindListener;
 
 public class AddressActivity extends Activity {
 
-    private List<Address> list;
-    private ListView listView;
-    private Button addAddress;
-    private ImageView back;
+    private List<Address>  list;
+    private ListView       listView;
+    private Button         addAddress;
+    private ImageView      back;
     private AddressAdapter adapter;
-    private String user_id;
-
+    private int            user_id;
+    private AddressDao     dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address_browse);
         init();
+
+        adapter = new AddressAdapter(this,list, R.layout.activity_address_browse_item);
+        listView.setAdapter(adapter);
+        listView.setDividerHeight(20);
 
 
         back.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +68,7 @@ public class AddressActivity extends Activity {
 
     public void init() {
         final SharedPreferences settings = getSharedPreferences("setting", 0);
-        user_id = settings.getString("user_id", "0");
+        user_id = settings.getInt("user_id", 0);
         Log.i("user_id", String.valueOf(user_id));
 
         listView = (ListView) findViewById(R.id.address_browse_listView);
@@ -72,7 +76,7 @@ public class AddressActivity extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.i("Click", "click");
+                Log.i("Click","click");
 
             }
         });
@@ -80,21 +84,8 @@ public class AddressActivity extends Activity {
         back = (ImageView) findViewById(R.id.address_browse_title_back);
         addAddress = (Button) findViewById(R.id.address_browse_title_add);
 
-
-
-
-        BmobQuery<Address> query = new BmobQuery<>();
-        query.addWhereEqualTo("user_id",user_id);
-        query.findObjects(new FindListener<Address>() {
-            @Override
-            public void done(List<Address> list, BmobException e) {
-                if (e == null) {
-                    adapter = new AddressAdapter(AddressActivity.this, list, R.layout.activity_address_browse_item);
-                    listView.setAdapter(adapter);
-                    listView.setDividerHeight(20);
-                }
-            }
-        });
+        dao = new AddressDao(getApplicationContext());
+        list = dao.loadAddress(user_id);
 
 
     }

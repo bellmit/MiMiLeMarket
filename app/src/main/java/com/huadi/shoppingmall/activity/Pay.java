@@ -13,26 +13,23 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huadi.shoppingmall.Adapter.PayAdapter;
-
+import com.huadi.shoppingmall.Adapter.ProductAdapter;
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
+import com.huadi.shoppingmall.db.dao.AddressDao;
+import com.huadi.shoppingmall.db.dao.OrderDao;
+import com.huadi.shoppingmall.db.dao.ProductDao;
+import com.huadi.shoppingmall.db.dao.ShopCarDao;
+import com.huadi.shoppingmall.db.dao.UserDao;
 import com.huadi.shoppingmall.model.Address;
 import com.huadi.shoppingmall.model.Order;
 import com.huadi.shoppingmall.model.Product;
-import com.huadi.shoppingmall.model.ShopCar;
 import com.huadi.shoppingmall.model.User;
 import com.huadi.shoppingmall.util.DateUtil;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
-import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by smartershining on 16-7-23.
@@ -54,10 +51,11 @@ public class Pay extends Activity {
 
 
     private int totalPrice;
-    private String user_id;
+    private int user_id;
     private Address address;
     private ArrayList<Order> orders;
     private List<Product> products;
+    private OrderDao dao;
 
 
     @Override
@@ -77,55 +75,42 @@ public class Pay extends Activity {
         receive_address = (TextView) findViewById(R.id.pay_address);
         pay = (Button) findViewById(R.id.pay_ack);
         listView = (ListView) findViewById(R.id.pay_listView);
-        //  cancel = (Button) findViewById(R.id.pay_cancel);
+      //  cancel = (Button) findViewById(R.id.pay_cancel);
         back = (ImageView) findViewById(R.id.pay_back);
     }
 
     public void initData() {
 
-
+        dao = new OrderDao(Pay.this);
         products = new ArrayList<>();
 
         orders = (ArrayList<Order>) getIntent().getSerializableExtra("order");
         Log.i("orders", String.valueOf(orders.size()));
 
         SharedPreferences settings = getSharedPreferences("setting", 0);
-        user_id = settings.getString("user_id", "0");
+        user_id = settings.getInt("user_id", 0);
 
         Log.i("O", "OK");
-        BmobQuery<Address> query = new BmobQuery<>();
-        query.addWhereEqualTo("user_id", user_id);
-        query.findObjects(new FindListener<Address>() {
-            @Override
-            public void done(List<Address> list, BmobException e) {
-                if (e == null) {
-                    Address address = list.get(0);
-                    receive_name.setText(address.getName());
-                    receive_address.setText(address.getAddress_info());
-                    receive_phone.setText(address.getPhone());
-                }
-            }
-        });
+        List<Address> addresses = new AddressDao(Pay.this).loadAddress(user_id);
+        address = addresses.get(0);
+
+        receive_name.setText(address.getName());
+        receive_address.setText(address.getAddress_info());
+        receive_phone.setText(address.getPhone());
 
 
-        for (final Order order : orders) {
-            String product_id = order.getProduct_id();
+        for (int i = 0; i < orders.size(); i++) {
+            int product_id = orders.get(i).getProduct_id();
             Log.i("pay_product_id", String.valueOf(product_id));
-            BmobQuery<Product> query1 = new BmobQuery<>();
-            query1.getObject(product_id, new QueryListener<Product>() {
-                @Override
-                public void done(Product product, BmobException e) {
-                    if (e == null) {
-                        product.setSalNum(order.getNumber());
-                        Log.i("py_product_number", String.valueOf(order.getNumber()));
-                        totalPrice += product.getPrice() * order.getNumber();
-                        products.add(product);
-                    }
-                }
-            });
+            Product product = new ProductDao(Pay.this).getProductById(product_id);
+
+            product.setSalNum(orders.get(i).getNumber());
+            Log.i("py_product_number", String.valueOf(orders.get(i).getNumber()));
+            totalPrice += product.getPrice() * orders.get(i).getNumber();
+            products.add(product);
         }
 
-        final User user = (User) new User().getCurrentUser();
+        final User user = new UserDao(Pay.this).getUserById(user_id);
 
         price.setText("总金额:  " + String.valueOf(totalPrice));
         adapter = new PayAdapter(this, products, R.layout.activity_pay_item);
@@ -139,25 +124,13 @@ public class Pay extends Activity {
 
                 if (user.getRemind() > totalPrice) {
                     user.setRemind(user.getRemind() - (int) totalPrice);
-                    user.update(user.getObjectId(), new UpdateListener() {
-                        @Override
-                        public void done(BmobException e) {
-
-                        }
-                    });
+                    new UserDao(Pay.this).updateUser(user);
 
 
                     //来自未付款订单
                     if (from.equals("unpay")) {
                         for (int i = 0; i < orders.size(); i++) {
-                            Order order = new Order();
-                            order.setStatus(1);
-                            order.update(orders.get(i).getObjectId(), new UpdateListener() {
-                                @Override
-                                public void done(BmobException e) {
-
-                                }
-                            });
+                            dao.updateOrder(orders.get(i).getId(), 1);
                         }
 
                     }
@@ -166,18 +139,13 @@ public class Pay extends Activity {
                         for (int i = 0; i < orders.size(); i++) {
                             Order order = new Order();
                             order.setNumber(orders.get(i).getNumber());
-                            order.setProduct_id(products.get(i).getObjectId());
-                            order.setAddress_id(address.getObjectId());
+                            order.setProduct_id(products.get(i).getId());
+                            order.setAddress_id(address.getId());
                             order.setStatus(1);
                             order.setPrice(totalPrice);
                             order.setOrder_time(new Date());
                             order.setUser_id(user_id);
-                            order.save(new SaveListener<String>() {
-                                @Override
-                                public void done(String s, BmobException e) {
-
-                                }
-                            });
+                            dao.saveOrder(order);
                         }
                     }
 
@@ -189,27 +157,17 @@ public class Pay extends Activity {
                             Order order = new Order();
                             order.setNumber(orders.get(i).getNumber());
                             Log.i("PayNumber", String.valueOf(orders.get(i).getNumber()));
-                            order.setProduct_id(products.get(i).getObjectId());
-                            order.setAddress_id(address.getObjectId());
+                            order.setProduct_id(products.get(i).getId());
+                            order.setAddress_id(address.getId());
                             order.setStatus(1);
                             order.setPrice(totalPrice);
                             order.setOrder_time(new Date());
                             order.setUser_id(user_id);
-                            order.save(new SaveListener<String>() {
-                                @Override
-                                public void done(String s, BmobException e) {
-
-                                }
-                            });
+                            dao.saveOrder(order);
                         }
-                        ShopCar shopCar = new ShopCar();
                         for (int i = 0; i < orders.size(); i++) {
-                            shopCar.delete(orders.get(i).getObjectId(), new UpdateListener() {
-                                @Override
-                                public void done(BmobException e) {
-
-                                }
-                            });
+                            ShopCarDao dao = new ShopCarDao(Pay.this);
+                            dao.deleteShopCarById(orders.get(i).getId());
                         }
                     }
                     Toast.makeText(Pay.this, "支付成功", Toast.LENGTH_LONG).show();
@@ -273,17 +231,12 @@ public class Pay extends Activity {
                     Order order = new Order();
                     order.setNumber(orders.get(i).getNumber());
                     order.setUser_id(user_id);
-                    order.setProduct_id(products.get(i).getObjectId());
-                    order.setAddress_id(address.getObjectId());
+                    order.setProduct_id(products.get(i).getId());
+                    order.setAddress_id(address.getId());
                     order.setStatus(0);
                     order.setPrice(totalPrice);
                     order.setOrder_time(new Date());
-                    order.save(new SaveListener<String>() {
-                        @Override
-                        public void done(String s, BmobException e) {
-
-                        }
-                    });
+                    dao.saveOrder(order);
 
                 }
 

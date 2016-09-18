@@ -10,16 +10,12 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-
 import com.huadi.shoppingmall.Adapter.ProductCommentAdapter;
 import com.huadi.shoppingmall.R;
+import com.huadi.shoppingmall.db.dao.CommentDao;
 import com.huadi.shoppingmall.model.Comment;
 
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 import static com.huadi.shoppingmall.R.id.product_comment_Button_detail;
 
@@ -30,7 +26,7 @@ public class ProductCommentActivity extends Activity implements OnClickListener 
     private List<Comment> list;
     private ListView listView;
     private ProductCommentAdapter adapter;
-    private String product_id;
+    private int  product_id;
 
     public void onCreate(Bundle savedInstanceState) {
 
@@ -40,24 +36,15 @@ public class ProductCommentActivity extends Activity implements OnClickListener 
         initViews();
 
         Intent intent = getIntent();
-        product_id = intent.getStringExtra("product_id");
+        product_id = intent.getIntExtra("product_id", 0);
 
+        CommentDao dao = new CommentDao(ProductCommentActivity.this);
 
-        BmobQuery<Comment> query = new BmobQuery<>();
-        query.addWhereEqualTo("product_id", product_id);
-        query.findObjects(new FindListener<Comment>() {
-            @Override
-            public void done(List<Comment> objects, BmobException e) {
-                if (e == null) {
-                    list = objects;
-                }
-            }
-        });
-
+        list = dao.getCommentByProductId(product_id);
         Log.i("list,size", String.valueOf(list.size()));
 
 
-        adapter = new ProductCommentAdapter(this, list, R.layout.activity_product_comment_item);
+        adapter = new ProductCommentAdapter(this,list, R.layout.activity_product_comment_item);
         listView.setAdapter(adapter);
         listView.setDividerHeight(20);
     }
@@ -84,7 +71,7 @@ public class ProductCommentActivity extends Activity implements OnClickListener 
                 break;
 
             case R.id.product_comment_ImageButton_back:
-                Intent intent1 = new Intent(ProductCommentActivity.this, Category.class);
+                Intent intent1= new Intent(ProductCommentActivity.this, Category.class);
                 startActivity(intent1);
                 ProductCommentActivity.this.finish();
                 break;

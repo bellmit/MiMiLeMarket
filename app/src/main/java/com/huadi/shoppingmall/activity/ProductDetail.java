@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,25 +20,19 @@ import android.widget.Toast;
 
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
+import com.huadi.shoppingmall.db.dao.ProductDao;
+import com.huadi.shoppingmall.db.dao.ShopCarDao;
 import com.huadi.shoppingmall.model.Order;
 import com.huadi.shoppingmall.model.Product;
 import com.huadi.shoppingmall.model.ShopCar;
-import com.huadi.shoppingmall.util.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.DownloadFileListener;
-import cn.bmob.v3.listener.QueryListener;
-import cn.bmob.v3.listener.SaveListener;
-
 public class ProductDetail extends Activity {
 
-    private String productID;  //从商品列表页面传过来的商品ID
-    private String log_user;  //从商品列表页面传过来的用户ID
+    private int productID;  //从商品列表页面传过来的商品ID
+    private int log_user;  //从商品列表页面传过来的用户ID
     private Product product;
 
     private ImageButton ThisActivity_back;
@@ -72,12 +65,15 @@ public class ProductDetail extends Activity {
 
         //获取从商品列表界面传递下来的商品ID
         final Intent intent = getIntent();
-        this.productID = intent.getStringExtra("product_id");
+        this.productID = intent.getIntExtra("product_id", 0);
         Log.i("product_id", String.valueOf(productID));
+
+        ProductDao Product_OP = new ProductDao(ProductDetail.this);
+        this.product = Product_OP.getProductById(this.productID);
 
 
         final SharedPreferences settings = getSharedPreferences("setting", 0);
-        log_user = settings.getString("user_id", "0");
+        log_user = settings.getInt("user_id", 0);
 
 
         ThisActivity_back = (ImageButton) findViewById(R.id.goods_detail_ImageButton_back);
@@ -96,53 +92,39 @@ public class ProductDetail extends Activity {
 
         //立即购买和加入购物车商品选择对话框各控件初始化
 
-        BmobQuery<Product> query = new BmobQuery<>();
-        query.getObject(productID, new QueryListener<Product>() {
-            @Override
-            public void done(Product product, BmobException e) {
-                if (e == null) {
-                    //取出商品名字进行展示
-                    Product_name.setText(product.getName().toString());
 
-                    //取出商品价格进行展示
-                    Product_price.append(String.valueOf(product.getPrice()).toString());
+        //取出商品名字进行展示
+        Product_name.setText(this.product.getName().toString());
 
-                    //取出商品销量进行展示
-                    Product_salenum.append(String.valueOf(product.getSalNum()).toString());
+        //取出商品价格进行展示
+        Product_price.append(String.valueOf(this.product.getPrice()).toString());
 
-                    //取出品牌进行设置
-                    Product_brand.append(product.getBrand().toString());
+        //取出商品销量进行展示
+        Product_salenum.append(String.valueOf(this.product.getSalNum()).toString());
 
-                    //取出品牌进行设置
-                    Product_size.append("S" + "     " + "M" + "     " + "L");
+        //取出品牌进行设置
+        Product_brand.append(this.product.getBrand().toString());
+
+        //取出品牌进行设置
+        Product_size.append("S" + "     " + "M" + "     " + "L");
 
 
-                    //取出颜色进行展示
-                    String str = product.getColor().toString();
-                    String[] strs = str.split(",");
-                    for (int i = 0; i < str.length(); i++) {
-                        Product_color.append(strs[i] + "     ");
-                    }
+        //取出颜色进行展示
+        String str = this.product.getColor().toString();
+        String[] strs = str.split(",");
+        for (int i = 0; i < str.length(); i++) {
+            Product_color.append(strs[i] + "     ");
+        }
 
-                    BmobFile file = product.getImage();
-                    file.download(new DownloadFileListener() {
-                        @Override
-                        public void done(String s, BmobException e) {
-                            Bitmap bitmap = ImageUtil.getLoacalBitmap(s);
-                            product_image.setImageBitmap(bitmap);
-                        }
+        //设置图片
+        int resId = ProductDetail.this.getResources().getIdentifier(product.getImage(), "drawable", getPackageName());
+        product_image.setImageResource(resId);
 
-                        @Override
-                        public void onProgress(Integer integer, long l) {
 
-                        }
-                    });
-                }
-            }
-        });
 
 
         //注册监听
+
 
 
         B_addcar.setOnClickListener(new OnClickListener() {
@@ -150,7 +132,7 @@ public class ProductDetail extends Activity {
             public void onClick(View view) {
                 Log.i("addcar", "is Clicked");
                 //若用户还未登录则提示
-                if (log_user.equals("0")) {
+                if (log_user == 0) {
                     Toast.makeText(ProductDetail.this, "您还未登录",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ProductDetail.this, Login.class);
@@ -174,22 +156,17 @@ public class ProductDetail extends Activity {
                                     ShopCar shopCar = new ShopCar();
 
                                     shopCar.setProduct_id(productID);
-                                    shopCar.setNumber(number);
+                                    shopCar.setProduct_num(number);
 
                                     shopCar.setUser_id(log_user);
-                                    Log.i("shopCar product id", String.valueOf(shopCar.getNumber()));
+                                    Log.i("shopCar product id", String.valueOf(shopCar.getProduct_num()));
 
-                                    shopCar.save(new SaveListener<String>() {
-                                        @Override
-                                        public void done(String s, BmobException e) {
-                                            if (e == null) {
-                                                Toast.makeText(ProductDetail.this, "加入购物车成功", Toast.LENGTH_LONG).show();
-                                                Intent intent = new Intent(ProductDetail.this, MainActivity.class);
-                                                //  intent.putExtra("choice", 1);
-                                                startActivity(intent);
-                                            }
-                                        }
-                                    });
+                                    ShopCarDao dao = new ShopCarDao(ProductDetail.this);
+                                    dao.saveShopCar(shopCar);
+
+                                    Intent intent = new Intent(ProductDetail.this, MainActivity.class);
+                                  //  intent.putExtra("choice", 1);
+                                    startActivity(intent);
 
                                 }
                             }).setNegativeButton("取消", null).show();
@@ -203,7 +180,7 @@ public class ProductDetail extends Activity {
             public void onClick(View view) {
                 Log.i("buy", "isClicked");
                 //若用户还未登录则提示
-                if (log_user.equals(0)) {
+                if (log_user == 0) {
                     Toast.makeText(ProductDetail.this, "您还未登录",
                             Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ProductDetail.this, Login.class);
@@ -229,8 +206,8 @@ public class ProductDetail extends Activity {
                                     order.setNumber(number);
                                     order.setProduct_id(productID);
                                     list.add(order);
-                                    intent.putExtra("order", list);
-                                    intent.putExtra("from", "pay");
+                                    intent.putExtra("order",list);
+                                    intent.putExtra("from","pay");
                                     ProductDetail.this.startActivity(intent);
 
 

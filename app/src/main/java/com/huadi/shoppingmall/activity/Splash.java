@@ -3,11 +3,12 @@ package com.huadi.shoppingmall.activity;
 import com.facebook.stetho.Stetho;
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
-
+import com.huadi.shoppingmall.db.DataBaseOpenHelper;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;

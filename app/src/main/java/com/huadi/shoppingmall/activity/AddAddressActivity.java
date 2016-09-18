@@ -6,26 +6,24 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
-
-
+import com.huadi.shoppingmall.db.dao.AddressDao;
 import com.huadi.shoppingmall.model.Address;
-
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
-import cn.bmob.v3.listener.UpdateListener;
 
 /**
  * Created by smartershining on 16-7-21.
  */
 
-public class AddAddressActivity extends Activity {
+public class AddAddressActivity extends Activity{
 
     private EditText name;
     private EditText phone;
@@ -33,7 +31,8 @@ public class AddAddressActivity extends Activity {
     private EditText postcode;
 
     private ImageView back;
-    private Button add;
+    private Button    add;
+
 
 
     public void onCreate(Bundle savedInstanced) {
@@ -48,8 +47,9 @@ public class AddAddressActivity extends Activity {
         add = (Button) findViewById(R.id.add_address_Button_save);
         name = (EditText) findViewById(R.id.add_address_EditText_getPerson);
         phone = (EditText) findViewById(R.id.add_address_EditText_phone);
-        detail = (EditText) findViewById(R.id.add_address_EditText_detailAddress);
+        detail = (EditText)findViewById(R.id.add_address_EditText_detailAddress);
         postcode = (EditText) findViewById(R.id.add_address_EditText_postcode);
+
 
 
         Intent intent = getIntent();
@@ -75,49 +75,38 @@ public class AddAddressActivity extends Activity {
             public void onClick(View view) {
 
                 SharedPreferences settings = getSharedPreferences("setting", 0);
-                String user_id = settings.getString("user_id", "0");
+                int user_id = settings.getInt("user_id", 0);
                 Address address = new Address();
 
-                if (isAdd) {
+
+                AddressDao dao = new AddressDao(getApplicationContext());
+                if(isAdd) {
                     address.setUser_id(user_id);
                     address.setName(name.getText().toString());
                     address.setPhone(phone.getText().toString());
                     address.setPostCode(postcode.getText().toString());
                     address.setAddress_info(detail.getText().toString());
 
-                    address.save(new SaveListener<String>() {
-                        @Override
-                        public void done(String s, BmobException e) {
-                            if (e == null) {
-                                Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(AddAddressActivity.this, MainActivity.class);
-                                intent.putExtra("choice", 2);
-                                startActivity(intent);
-                            }
-                        }
-                    });
-                } else {
+
+                    dao.saveAddress(address);
+                    Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddAddressActivity.this, MainActivity.class);
+                    intent.putExtra("choice",2);
+                    startActivity(intent);
+
+                }else {
 
                     address = (Address) getIntent().getSerializableExtra("address");
-                    Log.i("updateAddress", address.getName());
+                    Log.i("updateAddress",address.getName());
                     address.setName(name.getText().toString());
                     address.setPhone(phone.getText().toString());
                     address.setPostCode(postcode.getText().toString());
                     address.setAddress_info(detail.getText().toString());
-
-                    address.update(address.getObjectId(), new UpdateListener() {
-                        @Override
-                        public void done(BmobException e) {
-                            if (e == null) {
-                                Toast.makeText(getApplicationContext(), "更新成功", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(AddAddressActivity.this, MainActivity.class);
-                                intent.putExtra("choice", 2);
-                                startActivity(intent);
-                            }
-                        }
-                    });
-
-
+                    dao.updateAddress(address);
+                    Toast.makeText(getApplicationContext(), "更新成功", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddAddressActivity.this, MainActivity.class);
+                    intent.putExtra("choice",2);
+                    startActivity(intent);
                 }
             }
         });

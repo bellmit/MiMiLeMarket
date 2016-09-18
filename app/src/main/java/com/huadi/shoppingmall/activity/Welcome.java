@@ -6,13 +6,14 @@ import java.util.List;
 import com.huadi.shoppingmall.Adapter.ViewPagerAdapter;
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
-
+import com.huadi.shoppingmall.db.DataBaseOpenHelper;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -303,17 +304,17 @@ public class Welcome extends Activity implements OnClickListener, OnPageChangeLi
 
         //订单表
 
-        sql[84] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,PRICE,ADDRESS_ID,PRODUCT_ID,NUMBER) Values(1,'2016-07-04 12:52:05',3,105.0,1,21,1)";
-        sql[85] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-05-29 18:12:57',3,0,208.0,22,2)";
-        sql[86] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-07-21 19:52:05',3,1,309.0,23,3)";
-        sql[87] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-06-14 10:54:25',0,1,34,24,2)";
-        sql[88] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-08-15 21:29:36',2,0,409,25,2)";
-        sql[89] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-04-18 13:32:28',2,0,98.0,33,1)";
-        sql[90] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-07-24 23:52:37',3,1,508.0,41,4)";
-        sql[91] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-06-28 20:32:49',3,0,50.0,15,5)";
-        sql[92] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-08-27 18:57:50',2,0,30.0,14,3)";
-        sql[93] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-07-11 14:20:21',1,1,108.0,19,1)";
-        sql[94] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-06-12 16:13:42',0,1,79.0,31,1)";
+        sql[84] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,PRICE,ADDRESS_ID,PRODUCT_ID,NUMBER) Values(1,'2016-07-04 12:52:05',3,569.5,1,21,1)";
+        sql[85] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-05-29 18:12:57',3,0,579.5,22,2)";
+        sql[86] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-07-21 19:52:05',3,1,599.5,23,3)";
+        sql[87] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-06-14 10:54:25',0,1,699.5,24,2)";
+        sql[88] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-08-15 21:29:36',2,0,574.5,25,3)";
+        sql[89] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-04-18 13:32:28',2,0,59.5,33,1)";
+        sql[90] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-07-24 23:52:37',3,1,58.5,41,2)";
+        sql[91] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-06-28 20:32:49',3,0,169.5,15,2)";
+        sql[92] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-08-27 18:57:50',2,0,629.5,14,3)";
+        sql[93] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-07-11 14:20:21',1,1,59.5,19,1)";
+        sql[94] = "INSERT INTO ORDER_TB(USER_ID,ORDER_TIME,STATUS,ADDRESS_ID,PRICE,PRODUCT_ID,NUMBER) values(1,'2016-06-12 16:13:42',0,1,579.5,31,1)";
 
 
         //优惠券（Coupon）表
@@ -358,6 +359,14 @@ public class Welcome extends Activity implements OnClickListener, OnPageChangeLi
 
         sql[119] = "INSERT INTO COMMENT(USER_ID,ORDER_ID,PRODUCT_ID,CREATE_TIME, START_LEVEL,CONTENT) values(1,1,21,'2016-06-21 10:43:16',4,'服务很周到，下次还会来~')";
         sql[120] = "INSERT INTO COMMENT(USER_ID,ORDER_ID,PRODUCT_ID,CREATE_TIME, START_LEVEL,CONTENT) values(1,4,21,'2016-06-23 09:12:48',4,'态度很好，以后有需要还会再买~')";
+
+
+        DataBaseOpenHelper helper = new DataBaseOpenHelper(getApplicationContext());
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        for (int i = 1;  i < 121; i++) {
+            db.execSQL(sql[i]);
+        }
 
     }
 

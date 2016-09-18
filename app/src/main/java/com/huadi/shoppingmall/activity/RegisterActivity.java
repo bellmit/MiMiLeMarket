@@ -1,34 +1,25 @@
 package com.huadi.shoppingmall.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.huadi.shoppingmall.R;
+import com.huadi.shoppingmall.db.dao.UserDao;
 import com.huadi.shoppingmall.model.User;
 
-import cn.bmob.sms.BmobSMS;
-import cn.bmob.sms.exception.BmobException;
-import cn.bmob.sms.listener.RequestSMSCodeListener;
-import cn.bmob.sms.listener.VerifySMSCodeListener;
-import cn.bmob.v3.listener.SaveListener;
+import android.view.View.OnClickListener;
+import android.widget.*;
+import android.content.Intent;
+import android.view.View;
 
 public class RegisterActivity extends Activity implements OnClickListener {
-    private ImageButton back;
-    private EditText phone;
-    private EditText code;
-    private Button getCode;
-    private EditText password;
-    private Button signUp;
+
+    EditText regist_Uname;    //用户名输入框
+    EditText regist_Upwd;     //密码输入框
+    EditText regist_Repwd;    //确认密码输入框
+    Button regist_register;   //注册按钮
+    ImageButton regist_back;  //返回按钮
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,108 +28,70 @@ public class RegisterActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
-        initView();
-    }
 
-
-    private void initView() {
-        back = (ImageButton) findViewById(R.id.register_ImageButton_back);
-        phone = (EditText) findViewById(R.id.register_phone);
-        code = (EditText) findViewById(R.id.register_code);
-        getCode = (Button) findViewById(R.id.register_get_code);
-        password = (EditText) findViewById(R.id.register_password);
-        signUp = (Button) findViewById(R.id.register_sign_up);
-
-        back.setOnClickListener(this);
-        getCode.setOnClickListener(this);
-        signUp.setOnClickListener(this);
+        regist_Uname = (EditText) findViewById(R.id.register_EditText_uesrname);
+        regist_Upwd = (EditText) findViewById(R.id.register_EditText_pwd);
+        regist_Repwd = (EditText) findViewById(R.id.register_EditText_checkpwd);
+        regist_register = (Button) findViewById(R.id.register_ImageView_register);
+        regist_back = (ImageButton) findViewById(R.id.register_ImageButton_back);
+        regist_register.setOnClickListener(RegisterActivity.this);
+        regist_back.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.register_ImageButton_back:
-                Intent intent = new Intent(RegisterActivity.this, Login.class);
-                startActivity(intent);
-                break;
-            case R.id.register_get_code:
-                getCode();
-                break;
-            case R.id.register_sign_up:
-                submit();
-                break;
-        }
-    }
+        User regist_user = new User();
+        UserDao regist_UserOP = new UserDao(this);
+        String UserName = regist_Uname.getText().toString().trim();
+        String Pwd = regist_Upwd.getText().toString().trim();
+        String Repwd = regist_Repwd.getText().toString().trim();
+        if (v == regist_register) {
+            //输入为空时的判断
+            if ((UserName.length() == 0) || (Pwd.length() == 0) || (Repwd.length() == 0))
+                Toast.makeText(RegisterActivity.this, "输入不能为空",
+                        Toast.LENGTH_SHORT).show();
 
-    private void submit() {
-        // validate
-        final String phoneString = phone.getText().toString().trim();
-        if (TextUtils.isEmpty(phoneString)) {
-            Toast.makeText(this, "phone不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                //输入不为空时的判断
+            else if ((UserName.length() != 0) && (Pwd.length() != 0) && (Repwd.length() != 0)) {
 
-        String codeString = code.getText().toString().trim();
-        if (TextUtils.isEmpty(codeString)) {
-            Toast.makeText(this, "code不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                //密码输入不统一的提示
+                if (!Pwd.equals(Repwd))
+                    Toast.makeText(RegisterActivity.this, "输入的密码不一致",
+                            Toast.LENGTH_SHORT).show();
 
-        final String passwordString = password.getText().toString().trim();
-        if (TextUtils.isEmpty(passwordString)) {
-            Toast.makeText(this, "password不能为空", Toast.LENGTH_SHORT).show();
-            return;
-        }
+                    //用户名已被注册过的提示
+                else if (regist_UserOP.findUserbyName(UserName))
+                    Toast.makeText(RegisterActivity.this, "该用户已被注册过",
+                            Toast.LENGTH_SHORT).show();
+                    //用户未被注册时的判断判断
+                else {
+                    //regist_user.setEmail(null);
+                    regist_user.setName(UserName);
+                    regist_user.setPassword(Pwd);
+                    //注册成功
+                    if (regist_UserOP.saveUser(regist_user)) {
+                        Toast.makeText(RegisterActivity.this, "注册成功",
+                                Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(RegisterActivity.this, Login.class);
+                        startActivity(intent1);
+                    }
 
-        // TODO validate success, do something
+                    //输注册失败
+                    else {
+                        Toast.makeText(RegisterActivity.this, "注册失败",
+                                Toast.LENGTH_SHORT).show();
+                        regist_Uname.setText(null);
+                        regist_Upwd.setText(null);
+                        regist_Repwd.setText(null);
+                    }
 
-        BmobSMS.verifySmsCode(RegisterActivity.this, phoneString, codeString, new VerifySMSCodeListener() {
-            @Override
-            public void done(BmobException e) {
-                if (e == null) {
-                    User user = new User();
-                    user.setPassword(passwordString);
-                    user.setMobilePhoneNumber(phoneString);
-                    user.signUp(new SaveListener<User>() {
-                        @Override
-                        public void done(User user, cn.bmob.v3.exception.BmobException e) {
-                            if (e == null) {
-                                Toast.makeText(RegisterActivity.this, "注册成功",Toast.LENGTH_LONG).show();
-                                
-                            }
-                        }
-                    });
                 }
             }
-        });
-
-
-
-
+        }
+        //返回按钮
+        else if (v == regist_back) {
+            Intent intent2 = new Intent(RegisterActivity.this, Login.class);
+            startActivity(intent2);
+        }
     }
-
-    public void getCode() {
-
-        Log.i("getCode", "is Called");
-        BmobSMS.requestSMSCode(this, phone.getText().toString(), "mimile", new RequestSMSCodeListener(){
-            @Override
-            public void done(Integer integer, BmobException e) {
-
-                if (e == null) {
-                    Log.i("SMS", "OK");
-                } else {
-                    Log.i("error", String.valueOf(integer) + e.getMessage() + e.getErrorCode());
-                }
-            }
-        });
-
-
-
-    }
-
-
-
-
-
-
 }

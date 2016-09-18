@@ -12,14 +12,11 @@ import android.widget.TextView;
 import com.huadi.shoppingmall.Adapter.LogisticsAdapter;
 import com.huadi.shoppingmall.MainActivity;
 import com.huadi.shoppingmall.R;
+import com.huadi.shoppingmall.db.dao.ExpressDao;
 import com.huadi.shoppingmall.model.Express;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 
 /**
  * Created by smartershining on 16-7-22.
@@ -27,7 +24,7 @@ import cn.bmob.v3.listener.FindListener;
 
 public class LogisticsActivity extends Activity {
     private List<Express> list = new ArrayList<Express>();
-    private String order_id;
+    private int order_id;
     private TextView number;
     private Button back;
 
@@ -60,18 +57,9 @@ public class LogisticsActivity extends Activity {
 
     private void initLogistics() {
         Intent intent = getIntent();
-        order_id = intent.getStringExtra("order_id");
-
-        BmobQuery<Express> query = new BmobQuery<>();
-        query.addWhereEqualTo("order_id", order_id);
-        query.findObjects(new FindListener<Express>() {
-            @Override
-            public void done(List<Express> objects, BmobException e) {
-                if (e == null) {
-                    list = objects;
-                }
-            }
-        });
+        order_id = intent.getIntExtra("order_id", 0);
+        ExpressDao dao = new ExpressDao(getApplicationContext());
+        list = dao.getExpressByOrder_id(order_id);
 
     }
 }
